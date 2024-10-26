@@ -67,7 +67,7 @@ export const throttle = <T extends (...args: any[]) => void>(fn: T, delay: numbe
  * const debouncedLog = debounce((a: string) => console.log(`Debounced: ${a}`), 1000);
  * window.addEventListener('scroll', (evt: Event) => debouncedLog(evt.type));
  */
-export const debounce = <T extends (...args: any[]) => void>(fn: T, delay: number) => {
+export const debounce = <T extends (...args: any[]) => void>(fn: T, delay: number): (...args: any[]) => void => {
     let timer: ReturnType<typeof setTimeout> | null = null;
     return (...args: Parameters<T>) => {
         if (timer) {
@@ -90,7 +90,7 @@ export const debounce = <T extends (...args: any[]) => void>(fn: T, delay: numbe
  * }
  * run();
  */
-export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+export const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms))
 
 /**
  * Validates if a string is a valid email address.
@@ -100,7 +100,7 @@ export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, 
  * isEmail('test@example.com'); // true
  * isEmail('invalid-email'); // false
  */
-export const isEmail = (email: string) => {
+export const isEmail = (email: string): boolean => {
     return /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email);
 }
 
@@ -119,7 +119,7 @@ export const emailRegex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
  * isPhone('+1234567890'); // true
  * isPhone('invalid-phone'); // false
  */
-export const isPhone = (phone: string) => {
+export const isPhone = (phone: string): boolean => {
     return /^1[3456789]\d{9}$/.test(phone);
 }
 
@@ -132,11 +132,9 @@ export const isPhone = (phone: string) => {
  * remove(2, array);
  * console.log(array); // [1, 3]
  */
-export const remove = <T>(item: T, array: T[]) => {
+export const remove = <T>(item: T, array: T[]): T[] => {
     const idx = array.indexOf(item);
-    if (idx >= 0) {
-        array.splice(idx, 1);
-    }
+    return array.splice(idx, 1);
 }
 
 /**
@@ -148,7 +146,7 @@ export const remove = <T>(item: T, array: T[]) => {
  * removeAtIndex(1, array);
  * console.log(array); // [1, 3]
  */
-export const removeAtIndex = <T>(array: T[], index: number) => {
+export const removeAtIndex = <T>(array: T[], index: number): T[] => {
     return array.splice(index, 1);
 }
 
@@ -163,7 +161,7 @@ export const removeAtIndex = <T>(array: T[], index: number) => {
  * const merged = merge(array1, array2);
  * console.log(merged); // [1, 2, 3, 4]
  */
-export const merge = <T>(a: T[], b: T[]) => [...a, ...b];
+export const merge = <T>(a: T[], b: T[]): T[] => [...a, ...b];
 
 
 /**
@@ -175,7 +173,7 @@ export const merge = <T>(a: T[], b: T[]) => [...a, ...b];
  * const uniqueArray = unique(array);
  * console.log(uniqueArray); // [1, 2, 3]
  */
-export const unique = <T>(array: T[]) => {
+export const unique = <T>(array: T[]): T[] => {
     return Array.from(new Set(array));
 }
 
@@ -188,7 +186,7 @@ export const unique = <T>(array: T[]) => {
  * const randomNumber = random(1, 10);
  * console.log(randomNumber); // e.g., 7
  */
-export const random = (min: number, max: number) => {
+export const random = (min: number, max: number): number => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -362,7 +360,7 @@ export type FormEvent = SubmitEvent & {
  * <input type="number" name="b" />
  * </form>
  */
-export const formSubmitJson = (onSubmit: <T = Record<string, any>>(data: T, e: FormEvent) => void) => <T>(e: FormEvent) => {
+export const formSubmitJson = (onSubmit: <T = Record<string, any>>(data: T, e: FormEvent) => void): (<T>(e: FormEvent) => void) => <T>(e: FormEvent) => {
     const formData = new FormData(e.currentTarget)
     const json: Record<string, any> = {}
     formData.forEach((_, key) => {

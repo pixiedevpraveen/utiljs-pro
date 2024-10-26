@@ -1,6 +1,8 @@
 # utiljs-pro
 ![Package Size](https://deno.bundlejs.com/badge?q=utiljs-pro)
 
+TypeScript friendly Utility functions for Developers.
+
 To install:
 
 ```bash
@@ -15,6 +17,9 @@ yarn add utiljs-pro
 
 # pnpm
 pnpm add utiljs-pro
+
+# CDN
+https://unpkg.com/utiljs-pro@1.0.0/build/index.js
 ```
 
 
