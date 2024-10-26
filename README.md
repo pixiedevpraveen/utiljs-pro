@@ -1,4 +1,5 @@
 # utiljs-pro
+![Package Size](https://deno.bundlejs.com/badge?q=utiljs-pro)
 
 To install:
 
@@ -16,7 +17,6 @@ yarn add utiljs-pro
 pnpm add utiljs-pro
 ```
 
-![Package Size](https://deno.bundlejs.com/badge?q=utiljs-pro)
 
 ```ts
 // isPromise
