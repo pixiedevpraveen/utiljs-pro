@@ -4,3 +4,4 @@ bun.lockb
 build.ts
 tsconfig.json
 demo.ts
+publish.yml
