@@ -16,11 +16,7 @@ yarn add utiljs-pro
 pnpm add utiljs-pro
 ```
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![bundle][bundle-src]][bundle-href]
-[![JSDocs][jsdocs-src]][jsdocs-href]
-[![License][license-src]][license-href]
+![Package Size](https://deno.bundlejs.com/badge?q=utiljs-pro)
 
 ```ts
 // isPromise

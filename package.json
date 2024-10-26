@@ -1,7 +1,7 @@
 {
   "name": "utiljs-pro",
   "description": "TypeScript friendly Utility functions for Developers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "module": "build/index.js",
   "main": "build/index.js",
