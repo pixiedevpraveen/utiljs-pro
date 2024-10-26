@@ -1,0 +1,5 @@
+{
+    "name": "@praveen/utiljs-pro",
+    "version": "1.0.1",
+    "exports": "./src/index.ts"
+}
