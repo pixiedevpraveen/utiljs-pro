@@ -4,9 +4,11 @@
  * @param {ArrayLike<T>} array - The array-like object to check against.
  * @returns {boolean} True if the index exists in the array, false otherwise.
  * @example
+ * ```ts
  * const array = [1, 2, 3];
  * isIndexOf(1, array); // true
  * isIndexOf(3, array); // false
+ * ```
  */
 export const isIndexOf = <T>(idx: unknown | number, array: ArrayLike<T>): idx is keyof typeof array => {
     if (typeof idx === 'string' && idx) idx = Number(idx)
@@ -18,8 +20,10 @@ export const isIndexOf = <T>(idx: unknown | number, array: ArrayLike<T>): idx is
  * @param {unknown} array - The value to check.
  * @returns {boolean} True if the value is array-like, false otherwise.
  * @example
+ * ```ts
  * isArray([1, 2, 3]); // true
  * isArray('not an array'); // false
+ * ```
  */
 export const isArray = <T, A = ArrayLike<T>>(array: unknown): array is A => {
     return Array.isArray(array);
@@ -30,8 +34,10 @@ export const isArray = <T, A = ArrayLike<T>>(array: unknown): array is A => {
  * @param {unknown} array - The value to check.
  * @returns {boolean} True if the value is indexable, false otherwise.
  * @example
+ * ```ts
  * isIndexable([1, 2, 3]); // true
  * isIndexable('not indexable'); // false
+ * ```
  */
 export const isIndexable = <T, A = ArrayLike<T>>(array: unknown): array is A => {
     return Array.isArray(array) && array.length != 0;
@@ -43,8 +49,10 @@ export const isIndexable = <T, A = ArrayLike<T>>(array: unknown): array is A => 
  * @param {number} delay - The delay in milliseconds.
  * @returns {((...args: any[]) => void} The throttled function.
  * @example
+ * ```ts
  * const throttledLog = throttle(() => console.log('Throttled!'), 1000);
  * window.addEventListener('resize', throttledLog);
+ * ```
  */
 export const throttle = <T extends (...args: any[]) => void>(fn: T, delay: number): ((...args: any[]) => void) => {
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -64,8 +72,10 @@ export const throttle = <T extends (...args: any[]) => void>(fn: T, delay: numbe
  * @param {number} delay - The delay in milliseconds.
  * @returns {(...args: any[]) => void} The debounced function.
  * @example
+ * ```ts
  * const debouncedLog = debounce((a: string) => console.log(`Debounced: ${a}`), 1000);
  * window.addEventListener('scroll', (evt: Event) => debouncedLog(evt.type));
+ * ```
  */
 export const debounce = <T extends (...args: any[]) => void>(fn: T, delay: number): (...args: any[]) => void => {
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -84,11 +94,13 @@ export const debounce = <T extends (...args: any[]) => void>(fn: T, delay: numbe
  * @param {number} ms - The number of milliseconds to sleep.
  * @returns {Promise<void>} A promise that resolves after the delay.
  * @example
+ * ```ts
  * async function run() {
  *   await sleep(1000);
  *   console.log('1 second later');
  * }
  * run();
+ * ```
  */
 export const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -97,8 +109,10 @@ export const sleep = (ms: number): Promise<void> => new Promise(resolve => setTi
  * @param {string} email - The email string to validate.
  * @returns {boolean} True if the email is valid, false otherwise.
  * @example
+ * ```ts
  * isEmail('test@example.com'); // true
  * isEmail('invalid-email'); // false
+ * ```
  */
 export const isEmail = (email: string): boolean => {
     return /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email);
@@ -107,7 +121,9 @@ export const isEmail = (email: string): boolean => {
 /**
  * a regular expression for validating email addresses.
  * @example
+ * ```ts
  * emailRegex.test('test@example.com'); // true
+ * ```
  */
 export const emailRegex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
@@ -116,8 +132,10 @@ export const emailRegex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
  * @param {string} phone - The phone string to validate.
  * @returns {boolean} True if the phone is valid, false otherwise.
  * @example
+ * ```ts
  * isPhone('+1234567890'); // true
  * isPhone('invalid-phone'); // false
+ * ```
  */
 export const isPhone = (phone: string): boolean => {
     return /^1[3456789]\d{9}$/.test(phone);
@@ -128,9 +146,11 @@ export const isPhone = (phone: string): boolean => {
  * @param {T} item - The item to remove.
  * @param {T[]} array - The array to remove the item from.
  * @example
+ * ```ts
  * const array = [1, 2, 3];
  * remove(2, array);
  * console.log(array); // [1, 3]
+ * ```
  */
 export const remove = <T>(item: T, array: T[]): T[] => {
     const idx = array.indexOf(item);
@@ -142,9 +162,11 @@ export const remove = <T>(item: T, array: T[]): T[] => {
  * @param {T} item - The index of item to remove.
  * @param {T[]} array - The array to remove the item from.
  * @example
+ * ```ts
  * const array = [1, 2, 3];
  * removeAtIndex(1, array);
  * console.log(array); // [1, 3]
+ * ```
  */
 export const removeAtIndex = <T>(array: T[], index: number): T[] => {
     return array.splice(index, 1);
@@ -156,10 +178,12 @@ export const removeAtIndex = <T>(array: T[], index: number): T[] => {
  * @param {T[]} b - The second array.
  * @returns {T[]} The merged array.
  * @example
+ * ```ts
  * const array1 = [1, 2];
  * const array2 = [3, 4];
  * const merged = merge(array1, array2);
  * console.log(merged); // [1, 2, 3, 4]
+ * ```
  */
 export const merge = <T>(a: T[], b: T[]): T[] => [...a, ...b];
 
@@ -169,9 +193,11 @@ export const merge = <T>(a: T[], b: T[]): T[] => [...a, ...b];
  * @param {T[]} array - The array to make unique.
  * @returns {T[]} A new array with unique items.
  * @example
+ * ```ts
  * const array = [1, 1, 2, 2, 3];
  * const uniqueArray = unique(array);
  * console.log(uniqueArray); // [1, 2, 3]
+ * ```
  */
 export const unique = <T>(array: T[]): T[] => {
     return Array.from(new Set(array));
@@ -183,8 +209,10 @@ export const unique = <T>(array: T[]): T[] => {
  * @param {number} max - The maximum number.
  * @returns {number} A random number between min and max.
  * @example
+ * ```ts
  * const randomNumber = random(1, 10);
  * console.log(randomNumber); // e.g., 7
+ * ```
  */
 export const random = (min: number, max: number): number => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -195,8 +223,10 @@ export const random = (min: number, max: number): number => {
  * @param {unknown} value - The value to check.
  * @returns {boolean} True if the value is a string, false otherwise.
  * @example
+ * ```ts
  * isString('hello'); // true
  * isString(123); // false
+ * ```
  */
 export const isString = (value: unknown): value is string => typeof value === 'string';
 
@@ -205,8 +235,10 @@ export const isString = (value: unknown): value is string => typeof value === 's
  * @param {unknown} value - The value to check.
  * @returns {boolean} True if the value is a number, false otherwise.
  * @example
+ * ```ts
  * isNumber(123); // true
  * isNumber('123'); // false
+ * ```
  */
 export const isNumber = (value: unknown): value is number => typeof value === 'number';
 
@@ -215,9 +247,11 @@ export const isNumber = (value: unknown): value is number => typeof value === 'n
  * @param {T[]} array - The array to shuffle.
  * @returns {T[]} The shuffled array.
  * @example
+ * ```ts
  * const array = [1, 2, 3, 4];
  * const shuffled = shuffle(array);
  * console.log(shuffled); // e.g., [3, 1, 4, 2]
+ * ```
  */
 export const shuffle = <T>(array: T[]): T[] => {
     let m = array.length, t: T, i: number;
@@ -235,9 +269,11 @@ export const shuffle = <T>(array: T[]): T[] => {
  * @param {T} obj - The object or array to clone.
  * @returns {T} A deep clone of the object or array.
  * @example
+ * ```ts
  * const original = { a: 1, b: { c: 2 } };
  * const clone = deepClone(original);
  * console.log(clone); // { a: 1, b: { c: 2 } }
+ * ```
  */
 export const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
 
@@ -246,7 +282,9 @@ export const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
  * @param {string} str - The string to convert.
  * @returns {string} The title-cased string.
  * @example
+ * ```ts
  * toTitleCase('hello world'); // 'Hello World'
+ * ```
  */
 export const toTitleCase = (str: string): string =>
     str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -257,9 +295,11 @@ export const toTitleCase = (str: string): string =>
  * @param {keyof T} key - The key to group by.
  * @returns {Record<string, T[]>} An object with keys representing group names and values being arrays of grouped items.
  * @example
+ * ```ts
  * const array = [{ category: 'A', value: 1 }, { category: 'B', value: 2 }, { category: 'A', value: 3 }];
  * const grouped = groupBy(array, 'category');
  * console.log(grouped); // { A: [{ category: 'A', value: 1 }, { category: 'A', value: 3 }], B: [{ category: 'B', value: 2 }] }
+ * ```
  */
 export const groupBy = <T>(array: T[], key: keyof T): Record<string, T[]> =>
     array.reduce((result, currentValue) => {
@@ -276,8 +316,10 @@ export const groupBy = <T>(array: T[], key: keyof T): Record<string, T[]> =>
  * @param {object} obj - The object to check.
  * @returns {boolean} True if the object is empty, false otherwise.
  * @example
+ * ```ts
  * isEmptyObject({}); // true
  * isEmptyObject({ a: 1 }); // false
+ * ```
  */
 export const isEmptyObject = (obj: object): boolean =>
     Object.keys(obj).length === 0 && obj.constructor === Object;
@@ -288,9 +330,11 @@ export const isEmptyObject = (obj: object): boolean =>
  * @param {string} [currency='USD'] - The currency code.
  * @returns {string} The formatted currency string.
  * @example
+ * ```ts
  * formatCurrency(1234.56); // '$1,234.56' (use local currency by default)
  * formatCurrency(1234.56, 'USD', 'en-US'); // '$1,234.56'
  * formatCurrency(1234.56, 'EUR', 'en-GB'); // '€1,234.56'
+ * ```
  */
 export const formatCurrency = (value: number, currency?: string, locales?: string): string =>
     new Intl.NumberFormat(locales, { style: 'currency', currency }).format(value);
@@ -300,7 +344,9 @@ export const formatCurrency = (value: number, currency?: string, locales?: strin
  * @param {string} str - The string to capitalize.
  * @returns {string} The capitalized string.
  * @example
+ * ```ts
  * capitalize('hello'); // 'Hello'
+ * ```
  */
 export const capitalize = (str: string): string =>
     str.charAt(0).toUpperCase() + str.slice(1);
@@ -311,8 +357,10 @@ export const capitalize = (str: string): string =>
  * @param {T[]} b - The second array.
  * @returns {boolean} True if the arrays are equal, false otherwise.
  * @example
+ * ```ts
  * arraysEqual([1, 2, 3], [1, 2, 3]); // true
  * arraysEqual([1, 2, 3], [1, 2, 4]); // false
+ * ```
  */
 export const arraysEqual = <T>(a: T[], b: T[]): boolean =>
     a.length === b.length && a.every((v, i) => v === b[i]);
@@ -322,9 +370,11 @@ export const arraysEqual = <T>(a: T[], b: T[]): boolean =>
  * @param {number} length - The length of the string.
  * @returns {string} The random string.
  * @example
+ * ```ts
  * const randomStr = randomString(5);
  * console.log(randomStr); // e.g., 'abcde'
- */
+ * ```
+*/
 export const randomString = (length: number): string =>
     Math.random().toString(36).substring(2, length);
 
@@ -333,8 +383,10 @@ export const randomString = (length: number): string =>
  * @param {string} queryString - The query string to parse.
  * @returns {Record<string, string>} The parsed object.
  * @example
+ * ```ts
  * const obj = parseQueryString('?a=1&b=2');
  * console.log(obj); // { a: '1', b: '2' }
+ * ```
  */
 export const parseQueryString = (queryString: string): Record<string, string> =>
     queryString.replace(/^\?/, '').split('&').reduce((acc, pair) => {
@@ -352,6 +404,7 @@ export type FormEvent = SubmitEvent & {
 /**
  * convert form/inputs data to json object on submit.
  * @example
+ * ```tsx
  * <form onSubmit={formSubmitJson((data, e) => {
  *  e.preventDefault()
  *  console.log(data) // {a: 1, b: 2}
@@ -359,6 +412,7 @@ export type FormEvent = SubmitEvent & {
  * <input type="number" name="a" />
  * <input type="number" name="b" />
  * </form>
+ * ```
  */
 export const formSubmitJson = (onSubmit: <T = Record<string, any>>(data: T, e: FormEvent) => void): (<T>(e: FormEvent) => void) => <T>(e: FormEvent) => {
     const formData = new FormData(e.currentTarget)
@@ -377,8 +431,10 @@ export const formSubmitJson = (onSubmit: <T = Record<string, any>>(data: T, e: F
  * @param {Element} element - The element to check.
  * @returns {boolean} True if the element is visible, false otherwise.
  * @example
+ * ```ts
  * const element = document.getElementById('myElement');
  * isElementVisible(element);
+ * ```
  */
 export function isElementVisible(element: Element): boolean {
     if (!element) {
@@ -401,6 +457,7 @@ export function isElementVisible(element: Element): boolean {
  * @returns boolean
  * 
  * @example
+ * ```ts
  * const promise = new Promise(res => setTimeout(() => res(1), 50)) as Promise<number> | number
  * 
  * if (isPromise(obj)) { // true
@@ -409,6 +466,7 @@ export function isElementVisible(element: Element): boolean {
  * } else {
  *     obj; // hovering on obj shows the type as number
  * }
+ * ```
  */
 export function isPromise<T extends Promise<any>>(obj: unknown): obj is T {
     return obj instanceof Promise
@@ -420,6 +478,7 @@ export function isPromise<T extends Promise<any>>(obj: unknown): obj is T {
  * @returns boolean
  * 
  * @example
+ * ```ts
  * const asyncFn = (async () => { }) as unknown as (() => Promise<number>) | (() => number)
  * if (isAsyncFunction<number, () => Promise<number>>(asyncFn)) { // true
  *     const p = asyncFn(); // hovering on function shows the type as (() => Promise<number>) and on p as Promise<number>
@@ -427,6 +486,7 @@ export function isPromise<T extends Promise<any>>(obj: unknown): obj is T {
  * } else {
  *     const d = asyncFn(); // hovering on function shows the type as (() => number) and on d as number
  * }
+ * ```
  */
 export function isAsyncFunction<R extends unknown, T extends (() => Promise<R>)>(func: unknown): func is T {
     return typeof func === 'function' && func?.toString().startsWith('async')
