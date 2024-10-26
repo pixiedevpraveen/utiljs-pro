@@ -1,0 +1,27 @@
+{
+  "name": "utiljs-pro",
+  "description": "TypeScript friendly Utility functions for Developers",
+  "version": "1.0.0",
+  "type": "module",
+  "module": "build/index.js",
+  "main": "build/index.js",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "bun run build.ts && tsc --emitDeclarationOnly --declarationMap --declaration  --outDir ./build src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.0.0"
+  },
+  "author": "Praveen Yadav",
+  "license": "MIT",
+  "keywords": [
+    "js utils",
+    "utils functions",
+    "web util functions",
+    "full stack util functions",
+    "browser util functions",
+    "utiljs",
+    "utiljs-pro"
+  ]
+}
