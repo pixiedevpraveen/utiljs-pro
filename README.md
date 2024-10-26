@@ -1,5 +1,8 @@
 # utiljs-pro
 ![Package Size](https://deno.bundlejs.com/badge?q=utiljs-pro)
+[![JSR](https://jsr.io/badges/@praveen/utiljs-pro)](https://jsr.io/@praveen/utiljs-pro)
+[![JSR Score](https://jsr.io/badges/@praveen/utiljs-pro/score)](https://jsr.io/@praveen/utiljs-pro/score)
+
 
 TypeScript friendly Utility functions for Developers.
 
